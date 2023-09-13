@@ -1,31 +1,44 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <!-- 로고 또는 웹사이트 이름 -->
-        <router-link to="/" class="navbar-brand">My Chat App</router-link>
-  
-        <!-- 네비게이션 메뉴 -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <router-link to="/home" class="nav-link">Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/about" class="nav-link">About</router-link>
-            </li>
-          </ul>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/sdlu.webp" alt="Logo" width="30" height="30" class="d-inline-block align-middle">
+                SDLU WebChat
+            </a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search User" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
-      </div>
     </nav>
-  </template>
-
+</template>
+  
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'NavBar',
-  props: {
-    msg: String,
-  },
+    name: 'NavBar',
+    props: {
+        msg: String,
+    },
 });
 </script>
+  
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+    h3 {
+    margin: 40px 0 0;
+    }
+    ul {
+    list-style-type: none;
+    padding: 0;
+    }
+    li {
+    display: inline-block;
+    margin: 0 10px;
+    }
+    a {
+    color: #42b983;
+    }
+</style>
+  
