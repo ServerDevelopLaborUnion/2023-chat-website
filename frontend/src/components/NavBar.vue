@@ -40,5 +40,8 @@ export default defineComponent({
     a {
     color: #42b983;
     }
+    .navbar {
+        height: 60px
+    }
 </style>
   
