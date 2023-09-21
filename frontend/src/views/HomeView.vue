@@ -1,28 +1,35 @@
 <template>
   <NavBar></NavBar>
   <main class="container-fluid">
-    <div class="chat-box">
-      <ChatBox msg="채팅 내용" username="곽석현" other="true"></ChatBox>
-      <ChatBox msg="내가보낸거"></ChatBox>
+    <div class="chat-box" v-for="box, idx in messages" :key="idx">
+      <ChatBox :msg="'채팅 내용'" :username="'곽석현'" :other="true"></ChatBox>
     </div>
   </main>
-  <div class="chat-field">
-    <input class="form-control me-1" type="text" placeholder="메세지를 입력하세요">
-    <button type="submit" class="btn btn-primary btn-send">Send</button>
-  </div>
+  <ChatField></ChatField>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import NavBar from '@/components/NavBar.vue'
 import ChatBox from '@/components/ChatBox.vue';
+import ChatField from '@/components/ChatField.vue';
+import {ChatInfo} from '@/Types';
 
 export default defineComponent({
   name: 'HomeView',
   components: {
     NavBar,
     ChatBox,
+    ChatField
   },
+  props: {
+    messages: Array<ChatInfo>,
+  },
+  methods: {
+    addChatBox(msg: string, username?: string) {
+      
+    }
+  }
 });
 </script>
 
@@ -93,14 +100,5 @@ export default defineComponent({
   }
   .chat.other .text-col > .content {
     text-align: left;
-  }
-  .chat-field {
-    position: absolute;
-    display: flex;
-    height: 60px;
-    width: 100%;
-    padding: 10px;
-    bottom: 0px;
-    border-top: solid 1px rgba(0, 0, 0, 25);
   }
 </style>
