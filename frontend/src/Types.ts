@@ -1,13 +1,21 @@
 export class ChatInfo
 {
-    msg: string;
-    username?: string;
-    other: boolean;
+    messages: Message[];
 
-    constructor(msg: string, other: boolean, username?: string)
-    {
-        this.msg = msg;
+    constructor() {
+        this.messages = [];
+    }
+}
+
+export class Message
+{
+    context: string;
+    isMine: boolean;
+    username?: string
+
+    constructor(context: string, isMine: boolean, username?: string) {
+        this.context = context;
+        this.isMine = isMine;
         this.username = username;
-        this.other = other;
     }
 }

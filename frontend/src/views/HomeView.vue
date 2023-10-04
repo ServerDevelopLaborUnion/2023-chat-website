@@ -1,9 +1,10 @@
 <template>
   <NavBar></NavBar>
   <main class="container-fluid">
-    <div class="chat-box" v-for="box, idx in messages" :key="idx">
+    <div class="chat-box" v-for="box, idx in chatInfo" :key="idx">
       <ChatBox :msg="'채팅 내용'" :username="'곽석현'" :other="true"></ChatBox>
     </div>
+    <button @click="addChatBox('asdf', '곽석현')">Debug</button>
   </main>
   <ChatField></ChatField>
 </template>
@@ -13,7 +14,7 @@ import { defineComponent } from 'vue';
 import NavBar from '@/components/NavBar.vue'
 import ChatBox from '@/components/ChatBox.vue';
 import ChatField from '@/components/ChatField.vue';
-import {ChatInfo} from '@/Types';
+import {ChatInfo, Message} from '@/Types';
 
 export default defineComponent({
   name: 'HomeView',
@@ -23,11 +24,16 @@ export default defineComponent({
     ChatField
   },
   props: {
-    messages: Array<ChatInfo>,
+    chatInfo: Array,
+  },
+  setup(props) {
+    props.chatInfo = [];
   },
   methods: {
     addChatBox(msg: string, username?: string) {
-      
+      let msgclass = new Message(msg, username == undefined, username);
+      this.$emit('push', msgclass);
+      console.log(this.chatInfo);
     }
   }
 });
